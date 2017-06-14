@@ -1,0 +1,35 @@
+li, p, form {
+    font-family: Candara;
+    color: black;
+    font-size: 12;
+}
+h1 {
+    font-family: Candara;
+    font-size:20;
+    color: white;
+    padding-left: 20px;
+}
+a {
+    font-family: Candara;
+    color: lightblue;
+}
+
+HR {
+    border:1  dashed lightgrey;
+    width="99%";
+    color=grey;
+    size=1;
+}
+
+footer {
+height:50px;position:fixed;bottom:5px;left:5px;
+color: grey;
+}
+
+
+div.header {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: rbga(255,255,255,0.75);
+    background-color: #24292e;
+}
