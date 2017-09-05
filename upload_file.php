@@ -1,22 +1,27 @@
 <html>
-  <head>
-    <title>CRM+ 数据导入结果</title>
-    <link type="text/css" href="style.css" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta charset="utf-8">
-  </head>
-<body>
 
 <?php
+readfile('static/header.html');
+?>
 
+<div>
+
+</div>
+
+<?php
 function p_msg($msg) {
     echo "<p>".$msg."</p>";
 }
 
 //p_msg("你指定的tag_id是: ".$_POST["tag_id"]);
 //$tag_id = $_POST["tag_id"];
+
+// 如果post指令是delete，则删除所有上传的文件
+if (array_key_exists('delete', $_POST)) {
+    shell_exec('rm upload/*');
+    p_msg('已执行文件删除');
+    exit();
+}
 
 $file_extension = end(explode(".", $_FILES["file"]["name"]));
 $allowedExts = array("xls", "xlsx");
@@ -48,14 +53,16 @@ if (in_array($file_extension, $allowedExts))  {
       move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $_FILES["file"]["name"]);
       echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
       chmod("upload/" . $_FILES["file"]["name"], 0777);
-      p_msg("文件上传成功, 请等待程序自动处理.");
+      p_msg("文件上传成功");
       }
     }
 } else {
     p_msg("未选择有效文件!");
+    // p_msg(implode(',', $_POST));
+    // print_r($_POST);
+
 }
 ?>
-    <input type="button" name="button" id="button" value="返回首页" onClick="location.href='/'" />
 
 </body>
 </html>

@@ -1,11 +1,12 @@
 <html>
 <?php
 readfile('static/header.html');
-require_once('yun.php'); 
 ?>
+<h2>数据标签细分</h2>
 
-<p id='t1'>you can not see me</p>
-</body>
+<?php
+echo '<pre>'.shell_exec("source /home/linquan/.bash_profile; cd /home/linquan/workspace/chudian/log_system; sh get.sh; cd /home/linquan/workspace/crm_spider; sh divide.sh").'</pre>';
+?>
 
 
 <div id="footer">
@@ -16,14 +17,11 @@ require_once('yun.php');
 </div>
 
 <script type="text/javascript">
-
-// $("#data_divide").hide();
-$("#t1").hide();
 // 处理 Vue.js 框架
 var app2 = new Vue({
     el: "#pop",
     data: {
-        message: "Version 0.0.4  2013-2017 BCData Co,ltd.",  
+        message: "Version 0.0.4  2013-2017 BCData Co,ltd.",
     },
     methods: {
         popMessage: function() {
@@ -31,5 +29,8 @@ var app2 = new Vue({
         }
     }
 })
+
 </script>
+
+</body>
 </html>
